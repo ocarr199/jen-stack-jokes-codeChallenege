@@ -20,6 +20,12 @@ function getJokes (){
       }).then(function (response) {
         // response is what was in the res.send()
         console.log(response);
+        for(let hack of response){
+            $('#outputDiv').append(`
+            <h3>${hack.whoseJoke} ${hack.jokeQuestion} ${hack.punchLine} </h3>
+            `)
+        }
+       
       });
 }
 
