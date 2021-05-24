@@ -1,13 +1,14 @@
-const express = require( 'express' );
+const express = require('express');
 const app = express();
-const bodyParser = require( 'body-parser' );
+const bodyParser = require('body-parser');
 const PORT = 5000;
 
 // use bodyParser.urlencoded throughout the app with this:
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
-let jokes = [
-  {
+let jokes = [{
     whoseJoke: "Danny",
     jokeQuestion: "Why do scuba divers fall backwards out of boats?",
     punchLine: "If they fell forwards they’d still be in the boat!"
@@ -46,38 +47,40 @@ app.get("/jokes", (req, res) => {
 
 app.post("/jokes", (req, res) => {
   console.log(req.body);
+  // push data into jokes array
   jokes.push(req.body)
+  // send "created" status
   res.sendStatus(201)
 })
 app.delete("/jokes", (req, res) => {
- jokes = [
-  {
-    whoseJoke: "Danny",
-    jokeQuestion: "Why do scuba divers fall backwards out of boats?",
-    punchLine: "If they fell forwards they’d still be in the boat!"
-  },
-  {
-    whoseJoke: "Luke",
-    jokeQuestion: "Two fish are in a tank. What did one fish say to the other?",
-    punchLine: "Do you know how to drive this thing?"
-  },
-  {
-    whoseJoke: "Millie",
-    jokeQuestion: "What do you call a pile of cats?",
-    punchLine: "A meowntain!"
-  },
-  {
-    whoseJoke: "dEv",
-    jokeQuestion: "Why should you not play cards in the forest?",
-    punchLine: "Too many Cheetahs!"
-  },
-  {
-    whoseJoke: "Scott",
-    jokeQuestion: "I went to the zoo the other day, it had one dog...",
-    punchLine: "It was a shih tzu."
-  }
-];
- 
+  // retrun array to how it originally was
+  jokes = [{
+      whoseJoke: "Danny",
+      jokeQuestion: "Why do scuba divers fall backwards out of boats?",
+      punchLine: "If they fell forwards they’d still be in the boat!"
+    },
+    {
+      whoseJoke: "Luke",
+      jokeQuestion: "Two fish are in a tank. What did one fish say to the other?",
+      punchLine: "Do you know how to drive this thing?"
+    },
+    {
+      whoseJoke: "Millie",
+      jokeQuestion: "What do you call a pile of cats?",
+      punchLine: "A meowntain!"
+    },
+    {
+      whoseJoke: "dEv",
+      jokeQuestion: "Why should you not play cards in the forest?",
+      punchLine: "Too many Cheetahs!"
+    },
+    {
+      whoseJoke: "Scott",
+      jokeQuestion: "I went to the zoo the other day, it had one dog...",
+      punchLine: "It was a shih tzu."
+    }
+  ];
+  //  send back over to client
   res.send(jokes);
 });
 
