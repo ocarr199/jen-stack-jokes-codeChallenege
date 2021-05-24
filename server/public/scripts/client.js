@@ -7,6 +7,7 @@ function onReady() {
     // Run getJokes once DOM is ready
     // in order to have jokes array on client
     getJokes()
+    $('#addJokeButton').on('click', addJokes)
 }
 
 // function to request jokes array from server
@@ -29,9 +30,9 @@ function addJokes(){
         data:{
             whoseJoke: $('#whoseJokeIn').val(),
             jokeQuestion: $('#questionIn').val(),
-            punchLine: $('#punchLine').val()
+            punchLine: $('#punchlineIn').val()
         }
-    }).then(reponse => {
+    }).then(response => {
         console.log(response);
         getJokes()
     })
