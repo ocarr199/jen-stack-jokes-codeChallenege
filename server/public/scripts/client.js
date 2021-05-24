@@ -22,7 +22,7 @@ function getJokes (){
         console.log(response);
         for(let hack of response){
             $('#outputDiv').append(`
-            <h3>${hack.whoseJoke} ${hack.jokeQuestion} ${hack.punchLine} </h3>
+            <p>${hack.jokeQuestion}, ${hack.punchLine}</p>  <h3> - ${hack.whoseJoke}</h3>
             `)
         }
        
