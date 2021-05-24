@@ -8,6 +8,7 @@ function onReady() {
     // in order to have jokes array on client
     getJokes()
     $('#addJokeButton').on('click', addJokes)
+    $('#clearAdded').on('click', clearAdded)
 }
 
 // function to request jokes array from server
@@ -20,6 +21,7 @@ function getJokes (){
       }).then(function (response) {
         // response is what was in the res.send()
         console.log(response);
+        $('#outputDiv').empty()
         for(let hack of response){
             $('#outputDiv').append(`
             <p>${hack.jokeQuestion}, ${hack.punchLine}</p>  <h3> - ${hack.whoseJoke}</h3>
@@ -42,4 +44,19 @@ function addJokes(){
         console.log(response);
         getJokes()
     })
+}
+
+// 
+function clearAdded(){
+    $.ajax({
+        method: 'DELETE',
+        url: "/jokes"
+      })
+      .then(function (response) {
+        // response is status code
+        // this time it will log "created" bc code 201
+        console.log(response);
+        // run getCalc again with updated numbers array
+     getJokes()
+      });
 }
