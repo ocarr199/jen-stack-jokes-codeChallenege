@@ -5,14 +5,18 @@
     <title>JEN Stack Code Challenge</title>
     <script src="vendors/jquery.min.js" charset="utf-8"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="vendors/bootstrap.css">
+    <link rel="stylesheet" href="styles/style.css">
   </head>
   <body>
     <h1>JEN Stack Code Challenge</h1>
-    <input type='text' id='whoseJokeIn' placeholder='whose joke' />
-    <input type='text' id='questionIn' placeholder='question' />
-    <input type='text' id='punchlineIn' placeholder='punchline' />
-    <button id='addJokeButton'>Add Joke</button>
-    <button id='clearAdded'>Clear New Jokes</button>
+    <div class="input-group">
+    <input class="form-control" type='text' id='whoseJokeIn' placeholder='whose joke' />
+    <input class="form-control" type='text' id='questionIn' placeholder='question' />
+    <input class="form-control" type='text' id='punchlineIn' placeholder='punchline' />
+    <button class="btn btn-outline-secondary" id='addJokeButton'>Add Joke</button>
+    <button class="btn btn-outline-secondary" id='clearAdded'>Clear New Jokes</button>
+  </div>
     <h2>Jokes:</h2>
     <div id='outputDiv'>
     </div>
